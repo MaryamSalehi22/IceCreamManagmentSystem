@@ -1,0 +1,34 @@
+﻿@model Domain.Entities.Order
+@{
+    ViewData["Title"] = "Order Summary";
+}
+
+<h2>Order Summary</h2>
+<p>Order Date: @Model.OrderDate</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ice Cream Name</th>
+            <th>Base Price</th>
+            <th>Default Topping</th>
+            <th>Size</th>
+            <th>Final Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var iceCream in Model.IceCreams)
+        {
+            <tr>
+                <td>@iceCream.Name</td>
+                <td>@iceCream.BasePrice:C</td>
+                <td>@iceCream.DefaultTopping.Name (@iceCream.DefaultTopping.Price:C)</td>
+                <td>@iceCream.Size</td>
+                <td>@iceCream.CalculatePrice():C</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Total Price: @Model.CalculateTotalPrice():C</h3>
+<a class="btn btn-primary" href="@Url.Action("AddIceCream", "Order")">Add Ice Cream</a>

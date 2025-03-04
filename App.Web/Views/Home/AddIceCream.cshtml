@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Add Ice Cream";
+}
+
+<h2>Add Ice Cream</h2>
+
+<form asp-action="AddIceCream" method="post">
+    <div class="form-group">
+        <label for="name">Ice Cream Name:</label>
+        <input type="text" class="form-control" name="name" required />
+    </div>
+    <div class="form-group">
+        <label for="basePrice">Base Price:</label>
+        <input type="number" class="form-control" name="basePrice" step="0.01" required />
+    </div>
+    <div class="form-group">
+        <label for="size">Size:</label>
+        <select class="form-control" name="size" required>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Ice Cream</button>
+</form>
